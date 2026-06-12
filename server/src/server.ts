@@ -31,8 +31,7 @@ async function mainEntryFunction() {
     res.status(200).json(ok({ message: "Server is healthy/in running state" }));
   });
 
-
-
+ 
   app.use(notFound);
   app.use(errorHandler);
 
