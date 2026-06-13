@@ -1,28 +1,28 @@
 1. Create the project root folder
-mkdir my-project
-cd my-project
+   mkdir my-project
+   cd my-project
 2. Create the server folder
-mkdir server
-cd server
+   mkdir server
+   cd server
 3. Initialize Node.js
-npm init -y
+   npm init -y
 4. Create the src folder
-mkdir src
+   mkdir src
 5. Install production dependencies
-npm install express cors dotenv mongoose morgan zod
+   npm install express cors dotenv mongoose morgan zod
 6. Install TypeScript and development dependencies
-npm install -D typescript tsx @types/node @types/express @types/cors @types/morgan
+   npm install -D typescript tsx @types/node @types/express @types/cors @types/morgan
 7. Create tsconfig.json
-npx tsc --init
+   npx tsc --init
 
 Example tsconfig.json:
 
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+"compilerOptions": {
+"target": "ES2022",
+"lib": ["ES2022"],
+"module": "NodeNext",
+"moduleResolution": "NodeNext",
 
     "rootDir": "src",
     "outDir": "dist",
@@ -32,10 +32,10 @@ Example tsconfig.json:
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"]
-}
-8. Create the entry file
+
+},
+"include": ["src"]
+} 8. Create the entry file
 
 Inside src, create:
 
@@ -45,20 +45,20 @@ Project structure:
 
 my-project/
 └── server/
-    ├── node_modules/
-    ├── package.json
-    ├── package-lock.json
-    ├── tsconfig.json
-    └── src/
-        └── server.ts
-        
+├── node_modules/
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── src/
+└── server.ts
+
 Create Database File
 
 Inside the src folder, create a db folder to manage database connections.
 
 src/
 └── db/
-    └── index.ts
+└── index.ts
 
 The db folder contains all database configuration and connection logic.
 
@@ -80,10 +80,10 @@ Inside the util folder, create a file named envelope.ts.
 
 src/
 └── util/
-    └── envelope.ts
+└── envelope.ts
 
 The envelope.ts file provides a standardized structure for API responses.
-envlop file is in util for 
+envlop file is in util for
 
 create apperror file under util folder it help us to throw error from anywhere part of the code
 
@@ -93,8 +93,8 @@ Create an apperror.ts file inside the util folder.
 
 src/
 └── util/
-    ├── envelope.ts
-    └── apperror.ts
+├── envelope.ts
+└── apperror.ts
 
 The AppError utility provides a custom error class that can be thrown from any part of the application. It helps standardize error handling and allows error middleware to process errors consistently.
 
@@ -104,9 +104,9 @@ Create an asyncHandler.ts file inside the util folder.
 
 src/
 └── util/
-    ├── envelope.ts
-    ├── apperror.ts
-    └── asyncHandler.ts
+├── envelope.ts
+├── apperror.ts
+└── asyncHandler.ts
 Purpose
 
 Express does not automatically catch errors thrown inside asynchronous route handlers. Without proper error handling, unhandled promise rejections can occur and errors may not reach the application's error middleware.
@@ -132,20 +132,26 @@ Handles requests to routes that do not exist.
 Project Structure
 src/
 ├── middleware/
-│   ├── globalErrorHandler.ts
-│   └── notFound.ts
+│ ├── globalErrorHandler.ts
+│ └── notFound.ts
 └── util/
-    ├── envelope.ts
-    ├── apperror.ts
-    ├── asyncHandler.ts
-    └── errorHandler.ts
+├── envelope.ts
+├── apperror.ts
+├── asyncHandler.ts
+└── errorHandler.ts
 
+Authentication and Authorization
 
+This project uses Clerk for authentication and user management.
 
+Install Clerk Express
 
+Install the Clerk Express SDK:
 
+npm install @clerk/express
 
+User Model
 
+Create user.ts inside the models folder.
 
-
-
+The User model stores application-specific user information that may not be available directly from Clerk.
